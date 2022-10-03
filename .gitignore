@@ -44,3 +44,12 @@ Thumbs.db
 
 # RSA
 .rsa
+
+# etc
+docker-compose.yml
+.browserslistrc
+.editorconfig
+.gitignore
+.gitkeep
+.dockerignore
+Dockerfile

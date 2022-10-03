@@ -1,0 +1,2 @@
+This Node.js back-end application is based on the [MEAN stack] (https://www.mongodb.com/mean-stack) using Express.js, Mongoose and MongoDB.
+Its front-end application is [Book Reviewer for Angular] (https://github.com/inthelamp/book-reviewer-front-end-angular).
