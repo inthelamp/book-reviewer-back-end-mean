@@ -54,9 +54,8 @@ module.exports.Save = async (req, res) => {
     const result = reviewSchema.validate(req.body);
     if (result.error) {
         console.log(result.error.message);
-        return res.json({
+        return res.status(400).json({
             error: true,
-            status: 400,
             message: result.error.message,
         });
     }
@@ -102,9 +101,8 @@ module.exports.Update = async (req, res) => {
     const reviewResult = reviewSchema.validate(reviewFormData);
     if (reviewResult.error) {
         console.log(reviewResult.error.message);
-        return res.json({
+        return res.status(400).json({
             error: true,
-            status: 400,
             message: reviewResult.error.message,
         });
     }
@@ -116,9 +114,8 @@ module.exports.Update = async (req, res) => {
     const review = await Review.Model.findOne({ id: id, userId : userid });
 
     if (!review) {
-      return res.json({
+      return res.status(400).json({
         error: true,
-        status: 400,
         message: "No review is found for update."
       });
     }
@@ -147,9 +144,8 @@ module.exports.Update = async (req, res) => {
       const bookCoverResult = imageSchema.validate(bookCover);               
       if (bookCoverResult.error) {
         console.log(bookCoverResult.error.message);
-        return res.json({
+        return res.status(400).json({
             error: true,
-            status: 400,
             message: bookCoverResult.error.message,
         });
       }
@@ -186,9 +182,8 @@ module.exports.Update = async (req, res) => {
     const review = await Review.Model.findOne({ id: id, userId: userid, status: {$ne: status} });
 
     if (!review) {
-      return res.json({
+      return res.status(400).json({
         error: true,
-        status: 400,
         message: "No review is found for changing status."
       });
     }
@@ -284,9 +279,8 @@ module.exports.Update = async (req, res) => {
     const review = await Review.Model.findOne({ id: id, userId : userid }, { _id: 0, __v: 0, bookCover: { _id: 0, updatedAt: 0 }}).lean();
 
     if (!review) {
-      return res.json({
+      return res.status(400).json({
         error: true,
-        status: 400,
         message: "No my review is found."
       });
     }
@@ -326,9 +320,8 @@ module.exports.Update = async (req, res) => {
     const review = await Review.Model.findOne({ id: id, status: "Published" }, { _id: 0, __v: 0, bookCover: { _id: 0, updatedAt: 0 }}).lean();
 
     if (!review) {
-      return res.json({
+      return res.status(400).json({
         error: true,
-        status: 400,
         message: "No review is found."
       });
     }
@@ -368,9 +361,8 @@ module.exports.Update = async (req, res) => {
     let review = await Review.Model.findOne({ id: id, userId : userid });
 
     if (!review) {
-      return res.json({
+      return res.status(400).json({
         error: true,
-        status: 400,
         message: "No review to be deleted is found."
       });
     }
